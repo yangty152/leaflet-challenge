@@ -1,8 +1,8 @@
 // Create an initial map object
 // Set the longitude, latitude, and the starting zoom level
 var myMap = L.map("map", {
-    center: [45.52, -122.67],
-    zoom: 13
+    center: [40.4901657,-124.3073349],
+    zoom: 5
   });
 
 // Add a tile layer (the background map image) to our map
@@ -16,31 +16,38 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: API_KEY
 }).addTo(myMap);
 
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson").then( data => {
-    console.log(data.features);
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then( data => {
+  var features = data.features;
+  function markerSize(mag){
+    return 15*Math.log(mag); 
+  }
+  function fillcolor(depth){
+    if (depth>=90) {
+          return 'OrangeRed';
+        } else if (depth >=70 && depth <90) {
+          return 'DarkOrange';
+        } else if (depth >=50 && depth <70) {
+          return 'Gold';
+        } else if (depth >=30 && depth <50) {
+          return 'Yellow';
+        } else if (depth >=10 && depth <30) {
+          return 'GreenYellow';
+        }else {
+          return 'green';
+        }; 
+  }
+  for (var i=0; i<features.length; i++){
+    var coordinates = features[i].geometry.coordinates;
+    //console.log([coordinates[0],coordinates[1]]);
+    if (coordinates){
+    L.circleMarker([coordinates[1],coordinates[0]], {
+      fillOpacity: 0.75,
+      color: "gray",
+      weight: 0.5,
+      fillColor: fillcolor(coordinates[2]),
+      radius: markerSize(features[i].properties.mag),
+      }).bindPopup("<h1>" + features[i].properties.place + "<br/>Mag:"+features[i].properties.mag+"</h1> <hr>").addTo(myMap);
+      //coordinates.push(features[i].geometry.coordinates);
+      }
+    }
 })
-
-function fillcolor(points){
-    if (points >=200) {
-      return 'blue';
-    } else if (points >=150 && points <199) {
-      return 'green';
-    } else if (points >=99 && points <150) {
-      return 'yellow';
-    } else {
-      return 'red';
-    };
-  }
-  function markerSize(population){
-    return population/10; 
-  }
-  for (var i = 0; i < countries.length; i++){
-    var country = countries[i];
-    L.circleMarker(country.location, {
-      fillOpacity: 0.75,
-      color: "white",
-      fillColor: fillcolor(country.points),
-      radius: markerSize(country.points)
-    }).bindPopup("<h1>" + country.name + "</h1> <hr> <h3>Population: " + country.points + "</h3>").addTo(myMap);
-  }
-  
