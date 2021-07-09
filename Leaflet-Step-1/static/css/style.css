@@ -31,25 +31,25 @@ html {
 }
 
 .level1 {
-  color: #ec8a2e;
+  background-color: green;
 }
 
 .level2 {
-  color: #a0353a;
+  background-color: GreenYellow;
 }
 
 .level3 {
-  color: #f4ba48;
+  background-color: yellow;
 }
 
 .level4 {
-  color: #1b904f;
+  background-color: Gold;
 }
 
 .level5 {
-  color: #007dff;
+  background-color: darkorange;
 }
 .level6 {
-  color: #007dff;
+  background-color: red;
 }
 

@@ -2,7 +2,7 @@
 // Set the longitude, latitude, and the starting zoom level
 var myMap = L.map("map", {
     center: [37.7043,-97.251],
-    zoom: 5
+    zoom: 4
   });
 
   var info = L.control({
@@ -28,18 +28,19 @@ function markerSize(mag){
 
 //function to fill color based on the earthquick depth
 function fillcolor(depth){
-  if (depth>=90) {
-      } else if (depth >=70 && depth <90) {
-        return 'DarkOrange';
-      } else if (depth >=50 && depth <70) {
-        return 'Gold';
-      } else if (depth >=30 && depth <50) {
-        return 'Yellow';
-      } else if (depth >=10 && depth <30) {
-        return 'GreenYellow';
-      }else {
-        return 'green';
-      }; 
+  if (depth>=90){
+    return 'Red'; 
+  } else if (depth >=70 && depth <90) {
+    return 'DarkOrange';
+  } else if (depth >=50 && depth <70) {
+    return 'Gold';
+  } else if (depth >=30 && depth <50) {
+    return 'Yellow';
+  } else if (depth >=10 && depth <30) {
+    return 'GreenYellow';
+  }else {
+    return 'green';
+  }; 
 }
 
 // Add a tile layer (the background map image) to our map
@@ -75,10 +76,10 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
 })
 
 document.querySelector(".legend").innerHTML = [
-    "<div><div class='box level1'></div>-10-10</div>",
-    "<div><div class='box level2'></div>-10-30</div>",
-    "<div><div class='box level3'></div>-30-50</div>",
-    "<div><div class='box level4'></div>-50-70</div>",
-    "<div><div class='box level5'></div>-70-90</div>",
+    "<div><div class='box level1'></div>-10-10</div><br>",
+    "<div><div class='box level2'></div>-10-30</div><br>",
+    "<div><div class='box level3'></div>-30-50</div><br>",
+    "<div><div class='box level4'></div>-50-70</div><br>",
+    "<div><div class='box level5'></div>-70-90</div><br>",
     "<div><div class='box level6'></div>90+</div>",
   ].join("");
