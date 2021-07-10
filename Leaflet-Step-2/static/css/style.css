@@ -8,3 +8,48 @@ body,
 html {
   height: 100%;
 }
+
+.legend {
+  padding: 10px;
+  font-family: Sanchez, serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #555;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.box {
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  clear: both;
+}
+
+.level1 {
+  background-color: green;
+}
+
+.level2 {
+  background-color: GreenYellow;
+}
+
+.level3 {
+  background-color: yellow;
+}
+
+.level4 {
+  background-color: Gold;
+}
+
+.level5 {
+  background-color: darkorange;
+}
+.level6 {
+  background-color: red;
+}
+
