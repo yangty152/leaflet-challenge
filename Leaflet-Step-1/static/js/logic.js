@@ -67,7 +67,7 @@ for (var i=0; i<features.length; i++){
     weight: 0.5,
     fillColor: fillcolor(coordinates[2]),
     radius: markerSize(features[i].properties.mag),
-    }).bindPopup("<h3>" + features[i].properties.place + "<hr><br/>Mag:"+features[i].properties.mag+"<br/>Coordindates:"+features[i].geometry.coordinates+"</h3>"
+    }).bindPopup("<h3>" + features[i].properties.place + "<hr><br/>Magnitude: "+features[i].properties.mag+"<br/>Depth: "+features[i].geometry.coordinates[2]+"</h3>"
     ).addTo(myMap);
     }
   }
