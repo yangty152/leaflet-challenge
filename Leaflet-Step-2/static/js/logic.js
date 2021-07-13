@@ -112,13 +112,14 @@ return div;
 
 info.addTo(myMap);
 
+//Add legend to the map
 document.querySelector(".legend").innerHTML = [
-  "<div><div class='box level1'></div>-10-10</div><br>",
-  "<div><div class='box level2'></div>-10-30</div><br>",
-  "<div><div class='box level3'></div>-30-50</div><br>",
-  "<div><div class='box level4'></div>-50-70</div><br>",
-  "<div><div class='box level5'></div>-70-90</div><br>",
-  "<div><div class='box level6'></div>90+</div>",
+  "<div class = 'columns'><div class='box level1 coloricon'></div><div class = 'legendLabel'> -10-10</div></div>",
+  "<div class = 'columns'><div class='box level2 coloricon'></div><div class = 'legendLabel'> -10-30</div></div>",
+  "<div class = 'columns'><div class='box level3 coloricon'></div><div class = 'legendLabel'> -30-50</div></div>",
+  "<div class = 'columns'><div class='box level4 coloricon'></div><div class = 'legendLabel'> -50-70</div></div>",
+  "<div class = 'columns'><div class='box level5 coloricon'></div><div class = 'legendLabel'> -70-90</div></div>",
+  "<div class = 'columns'><div class='box level6 coloricon'></div><div class = 'legendLabel'> 90+</div></div>",
 ].join("");
 })
 })
